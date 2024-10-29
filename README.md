@@ -16,7 +16,7 @@ This is a tool to convert academic papers in PDF format to Markdown format. The 
 ## Usage
 
 1. **Initialize Configuration File**:
-   - Use the `mv` command to rename `.env.example` to `.env`.
+   - Use the `cp` command to rename `.env.example` to `.env`.
    - Get API Keys from [Doc2X](https://open.noedgeai.com/apiKeys) and [aliyun OSS](https://oss.console.aliyun.com/)
    - Fill in required API Keys in the `.env` file.
 
