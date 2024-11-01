@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from pdfdeal import Doc2X
-from pdfdeal.file_tools import get_files, unzips, auto_split_mds, md_replace_imgs, gen_folder_list
+from pdfdeal.file_tools import get_files, unzips, auto_split_mds, mds_replace_imgs
 import os, oss2, logging
 
 load_dotenv()
@@ -103,16 +103,10 @@ ossupload = Ali_OSS(
     Bucket=os.environ.get("Bucket"),
 )
 
-for file_path in gen_folder_list(output_path, "md", True):
-    flag = md_replace_imgs(
-        mdfile=file_path,
-        replace=ossupload,
-        threads=5,
-    )
-# success, failed, flag = mds_replace_imgs(
-#     path=output_path,
-#     replace=ossupload,
-#     threads=5,
-# )
-    print("Start replace image url to online url")
-    print(flag)
+success, failed, flag = mds_replace_imgs(
+    path=output_path,
+    replace=ossupload,
+    threads=5,
+ )
+print("Start replace image url to online url")
+print_result(success, failed, flag)
